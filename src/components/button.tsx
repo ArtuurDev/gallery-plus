@@ -1,6 +1,6 @@
 import React from "react";
 import Icon from "./icon";
-import Text from "./text";
+import {Text} from "./text";
 import {tv, type VariantProps} from "tailwind-variants";
 import SpinnerIcon from "../assets/icons/spinner.svg?react";
 import cx from "classnames";
@@ -84,7 +84,7 @@ interface ButtonProps
 	handling?: boolean;
 }
 
-export default function Button({
+export function Button({
 	variant,
 	size,
 	disabled,

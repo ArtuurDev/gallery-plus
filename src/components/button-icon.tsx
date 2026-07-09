@@ -53,7 +53,7 @@ interface ButtonIconProps
 	handling?: boolean;
 }
 
-export default function ButtonIcon({
+export function ButtonIcon({
 	variant,
 	size,
 	disabled,

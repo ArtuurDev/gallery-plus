@@ -1,13 +1,13 @@
-import Button from "./components/button";
-import ButtonIcon from "./components/button-icon";
+import {Button} from "./components/button";
+import {ButtonIcon} from "./components/button-icon";
 import ChevronLeftIcon from "./assets/icons/chevron-left.svg?react";
 import ChevronRightIcon from "./assets/icons/chevron-right.svg?react";
-import Badge from "./components/badge";
-import Alert from "./components/alert";
-import Divider from "./components/divider";
+import {Badge} from "./components/badge";
+import {Alert} from "./components/alert";
+import {Divider} from "./components/divider";
 import { InputText } from "./components/input-text";
 import Search from './assets/icons/search.svg?react'
-
+import { InputCheckbox } from 	'./components/input-checkbox'
 export default function App() {
 	return (
 		<div className="grid gap-7 p-6">
@@ -52,6 +52,9 @@ export default function App() {
 			</div>
 			<div>
 				<InputText icon={Search}/>
+			</div>
+			<div>
+				<InputCheckbox/>
 			</div>
 		</div>
 	);

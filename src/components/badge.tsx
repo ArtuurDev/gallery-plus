@@ -1,5 +1,5 @@
 import React from "react";
-import Text from "./text";
+import {Text} from "./text";
 import {tv, type VariantProps} from "tailwind-variants";
 import cx from "classnames";
 import Skeleton from "./skeleton";
@@ -51,7 +51,7 @@ interface BadgeProps
 	loading?: boolean;
 }
 
-export default function Badge({
+export function Badge({
 	variant,
 	size,
 	className,
