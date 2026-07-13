@@ -1,14 +1,20 @@
-import {Button} from "./components/button";
-import {ButtonIcon} from "./components/button-icon";
+import { Button } from "./components/button";
+import { ButtonIcon } from "./components/button-icon";
 import ChevronLeftIcon from "./assets/icons/chevron-left.svg?react";
 import ChevronRightIcon from "./assets/icons/chevron-right.svg?react";
-import {Badge} from "./components/badge";
-import {Alert} from "./components/alert";
-import {Divider} from "./components/divider";
+import { Badge } from "./components/badge";
+import { Alert } from "./components/alert";
+import { Divider } from "./components/divider";
 import { InputText } from "./components/input-text";
 import Search from './assets/icons/search.svg?react'
-import { InputCheckbox } from 	'./components/input-checkbox'
+import { InputCheckbox } from './components/input-checkbox'
+import { InputSingleFile } from "./components/input-single-file";
+import { useForm } from "react-hook-form";
+
 export default function App() {
+
+	const form = useForm()
+
 	return (
 		<div className="grid gap-7 p-6">
 			<div className="flex gap-3">
@@ -51,10 +57,13 @@ export default function App() {
 				<Divider />
 			</div>
 			<div>
-				<InputText icon={Search}/>
+				<InputText icon={Search} />
 			</div>
 			<div>
-				<InputCheckbox/>
+				<InputCheckbox />
+			</div>
+			<div>
+				<InputSingleFile allowedExtensions={['png', 'jpeg', 'jpg']} maxFileSize={50} form={form} {...form.register('file')}/>
 			</div>
 		</div>
 	);
