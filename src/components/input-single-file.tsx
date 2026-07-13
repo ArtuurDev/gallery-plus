@@ -24,9 +24,10 @@ interface InputSingleFileProps extends VariantProps<typeof inputSingleFileVarian
     form: any,
     allowedExtensions: string[],
     maxFileSize: number
+    replaceBy: ReactNode
 }
 
-export function InputSingleFile({ size, form, error, allowedExtensions, maxFileSize, ...props }: InputSingleFileProps) {
+export function InputSingleFile({ size, form, error, allowedExtensions, maxFileSize, replaceBy, ...props }: InputSingleFileProps) {
     const name = props.name || ""
     const formValues = useWatch({ control: form.control })
 
@@ -97,25 +98,31 @@ export function InputSingleFile({ size, form, error, allowedExtensions, maxFileS
                     </div>
                 </>
             ) : (
-                <div className="flex gap-3 items-center border border-solid border-border-primary mt-5 p-3 rounded">
-                    <Icon svg={FileImageIcon} className="fill-white w-6 h-6" />
-                    <div className="flex flex-col">
-                        <div className="truncate max-w-[20rem]">
-                            <Text variant="label-medium" className="text-placeholder">
-                                {formFile.name || "Arquivo selecionado"}
-                            </Text>
-                        </div>
-                        <div className="flex">
-                            <button
-                                type="button"
-                                className={textVariants({ variant: "label-small", className: 'text-accent-red cursor-pointer' })}
-                                onClick={() => form.setValue(name, undefined)}
-                            >
-                                Remover
-                            </button>
+
+                <>
+                    {replaceBy}
+
+                    <div className="flex gap-3 items-center border border-solid border-border-primary mt-5 p-3 rounded">
+                        <Icon svg={FileImageIcon} className="fill-white w-6 h-6" />
+                        <div className="flex flex-col">
+                            <div className="truncate max-w-[20rem]">
+                                <Text variant="label-medium" className="text-placeholder">
+                                    {formFile.name || "Arquivo selecionado"}
+                                </Text>
+                            </div>
+                            <div className="flex">
+                                <button
+                                    type="button"
+                                    className={textVariants({ variant: "label-small", className: 'text-accent-red cursor-pointer' })}
+                                    onClick={() => form.setValue(name, undefined)}
+                                >
+                                    Remover
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </>
+
             )}
         </div>
     )
