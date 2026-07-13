@@ -13,8 +13,7 @@ export const buttonVariants = tv({
 			secondary: "bg-background-secondary hover:bg-background-tertiary",
 			destructive: "bg-background-secondary hover:bg-background-tertiary",
 			ghost: `
-					bg-transparent border border-solid border-border-primary 
-				text-accent-paragraph hover:border-background-secondary
+					bg-transparent
 				`,
 		},
 		size: {
