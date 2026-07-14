@@ -5,8 +5,9 @@ import { Link } from "react-router";
 import Logo from '../assets/images/galeria-plus-full-logo.svg?react'
 import { Button } from "./button";
 import { PhotosSearch } from "./photos-search";
+import { Divider } from "./divider";
 
-export interface MainHeaderProps extends React.ComponentProps<typeof Container> {}
+export interface MainHeaderProps extends React.ComponentProps<typeof Container> { }
 
 export function MainHeader({
   className,
@@ -25,7 +26,9 @@ export function MainHeader({
         <Logo className="h-5" />
       </Link>
 
-      <PhotosSearch/>
+      <PhotosSearch />
+
+      <Divider orientation="vertical" className="h-10" />
 
       <div className="flex items-center gap-3">
         <Button>Nova foto</Button>
