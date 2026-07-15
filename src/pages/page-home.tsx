@@ -1,12 +1,76 @@
 import Container from "../components/container";
-import { Text } from "../components/text";
+import { AlbumsFilter } from "../contexts/albums/components/albums-filter";
+import { PhotosList } from "../contexts/photos/components/photos-list";
 
 export function PageHome() {
   return (
-    <>
-      <Container>
-        <Text variant="heading-medium">Página inicial</Text>
-      </Container>
-    </>
-  );
+    <Container className="">
+      <AlbumsFilter albums={[
+        {
+          id: '12345',
+          title: 'paisagens'
+        },
+        {
+          id: '12345',
+          title: 'paisagens'
+        },
+        {
+          id: '12345',
+          title: 'paisagens'
+        },
+        {
+          id: '12345',
+          title: 'paisagens'
+        },
+        {
+          id: '12345',
+          title: 'paisagens'
+        },
+        {
+          id: '12345',
+          title: 'paisagens'
+        }
+      ]} />
+      <PhotosList photos={
+        [
+          {
+            id: '123',
+            albums: [{
+              id: '1234',
+              title: 'gatinhos'
+            }],
+            imageId: 'portrait-tower.png',
+            title: 'gatinho'
+          },
+          {
+            id: '123',
+            albums: [{
+              id: '1234',
+              title: 'gatinhos'
+            }],
+            imageId: 'portrait-tower.png',
+            title: 'gatinho'
+          },
+          {
+            id: '123',
+            albums: [{
+              id: '1234',
+              title: 'gatinhos'
+            }],
+            imageId: 'portrait-tower.png',
+            title: 'gatinho'
+          },
+          {
+            id: '123',
+            albums: [{
+              id: '1234',
+              title: 'gatinhos'
+            }],
+            imageId: 'portrait-tower.png',
+            title: 'gatinho'
+          }
+        ]
+      } />
+    </Container>
+  )
 }

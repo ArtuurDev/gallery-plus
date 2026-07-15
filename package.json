@@ -25,6 +25,7 @@
     "react-dom": "^19.1.0",
     "react-hook-form": "^7.81.0",
     "react-router": "^8.2.0",
+    "tailwind-scrollbar": "^4.0.2",
     "tailwind-variants": "^1.0.0",
     "tailwindcss": "^4.1.10",
     "zod": "^3.22.4"
