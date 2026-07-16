@@ -2,7 +2,7 @@ import type { Album } from "../models/album"
 import cn from "classnames"
 import { Text } from "../../../components/text"
 import { Button } from "../../../components/button"
-import Skeleton from "../../../components/skeleton"
+import {Skeleton} from "../../../components/skeleton"
 
 
 interface AlbumsFilterProps extends React.ComponentProps<"div"> {

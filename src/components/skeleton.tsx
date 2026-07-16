@@ -19,7 +19,7 @@ interface SkeletonProps
 	extends VariantProps<typeof skeletonVariants>,
 		React.ComponentProps<"div"> {}
 
-export default function Skeleton({
+export function Skeleton({
 	rounded,
 	className,
 	...props

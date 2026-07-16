@@ -1,5 +1,5 @@
 import type React from "react";
-import Container from "./container";
+import {Container} from "./container";
 import cn from "classnames";
 import { Link } from "react-router";
 import Logo from '../assets/images/galeria-plus-full-logo.svg?react'

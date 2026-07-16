@@ -1,6 +1,6 @@
 import type { Photo } from "../models/photos";
 import { Text } from "../../../components/text";
-import Skeleton from "../../../components/skeleton";
+import {Skeleton} from "../../../components/skeleton";
 import { PhotoWidget } from "./photo-widget";
 
 interface PhotosListProps {

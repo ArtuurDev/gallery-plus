@@ -1,5 +1,5 @@
 import { ImagePreview } from "../../../components/image-preview";
-import Skeleton from "../../../components/skeleton";
+import {Skeleton} from "../../../components/skeleton";
 import type { Photo } from "../models/photos";
 import { Text } from "../../../components/text";
 import { Badge } from "../../../components/badge";
