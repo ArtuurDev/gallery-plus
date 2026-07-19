@@ -6,9 +6,9 @@ import { InputText } from "../../../components/input-text"
 import { ImagePreview } from "../../../components/image-preview"
 import { Text } from "../../../components/text"
 import { Button } from "../../../components/button"
-import type { Album } from "../../albums/models/album"
 import { Skeleton } from "../../../components/skeleton"
 import { DialogClose } from "@radix-ui/react-dialog"
+import { UseAlbums } from "../../albums/hooks/use-albums"
 
 export interface PhotoNewDialogProps {
   trigger: React.ReactNode
@@ -19,12 +19,8 @@ export function PhotoNewDialog({
 }: PhotoNewDialogProps) {
 
   const form = useForm()
-  const isLoadingAlbum = false;
-  const albums: Album[] = [
-    { id: "3421", title: "Album 1" },
-    { id: "123", title: "Album 2" },
-    { id: "456", title: "Album 3" },
-  ];
+
+  const { albums, isLoadingAlbums } = UseAlbums()
 
   return (
     <Dialog>
@@ -55,7 +51,7 @@ export function PhotoNewDialog({
 
             <div className="flex flex-wrap gap-3">
               {
-                !isLoadingAlbum && albums.length > 0 && albums.map((album) => (
+                !isLoadingAlbums && albums.length > 0 && albums.map((album) => (
                   <Button
                     key={album.id}
                     variant="ghost"
@@ -68,7 +64,7 @@ export function PhotoNewDialog({
               }
 
               {
-                isLoadingAlbum && Array.from({ length: 5 }).map((_, index) => (
+                isLoadingAlbums && Array.from({ length: 5 }).map((_, index) => (
                   <Skeleton
                     key={`album-loading-${index}`}
                     className="w-20 h-7"
