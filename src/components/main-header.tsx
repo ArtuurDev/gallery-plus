@@ -1,5 +1,5 @@
 import type React from "react";
-import {Container} from "./container";
+import { Container } from "./container";
 import cn from "classnames";
 import { Link } from "react-router";
 import Logo from '../assets/images/galeria-plus-full-logo.svg?react'
@@ -7,6 +7,7 @@ import { Button } from "./button";
 import { PhotosSearch } from "./photos-search";
 import { Divider } from "./divider";
 import { PhotoNewDialog } from "../contexts/photos/components/photo-new-dialog";
+import AlbumNewDialog from "../contexts/albums/components/album-new-dialog";
 
 export interface MainHeaderProps extends React.ComponentProps<typeof Container> { }
 
@@ -32,8 +33,10 @@ export function MainHeader({
       <Divider orientation="vertical" className="h-10" />
 
       <div className="flex items-center gap-3">
-        <PhotoNewDialog trigger={<Button>Nova foto</Button>}/>
-        <Button variant="secondary">Criar álbum</Button>
+        <PhotoNewDialog trigger={<Button>Nova foto</Button>} />
+        <AlbumNewDialog trigger={
+          <Button variant="secondary">Criar álbum</Button>
+        } />
       </div>
 
     </Container>
