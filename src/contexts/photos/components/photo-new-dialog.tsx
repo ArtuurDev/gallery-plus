@@ -8,7 +8,7 @@ import { Text } from "../../../components/text"
 import { Button } from "../../../components/button"
 import { Skeleton } from "../../../components/skeleton"
 import { DialogClose } from "@radix-ui/react-dialog"
-import { UseAlbums } from "../../albums/hooks/use-albums"
+import { useAlbums } from "../../albums/hooks/use-albums"
 
 export interface PhotoNewDialogProps {
   trigger: React.ReactNode
@@ -20,7 +20,7 @@ export function PhotoNewDialog({
 
   const form = useForm()
 
-  const { albums, isLoadingAlbums } = UseAlbums()
+  const { albums, isLoadingAlbums } = useAlbums()
 
   return (
     <Dialog>

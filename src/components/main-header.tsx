@@ -16,7 +16,7 @@ export function MainHeader({
   ...props
 }: MainHeaderProps) {
   const { pathname } = useLocation() 
-  
+
   return (
     <Container as="header" className={cn(`
       flex justify-between items-center gap-10
@@ -36,8 +36,6 @@ export function MainHeader({
           <Divider orientation="vertical" className="h-10" />
         </>
       )}
-
-      <Divider orientation="vertical" className="h-10" />
 
       <div className="flex items-center gap-3">
         <PhotoNewDialog trigger={<Button>Nova foto</Button>} />
