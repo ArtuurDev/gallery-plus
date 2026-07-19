@@ -20,7 +20,7 @@ export function PhotoWidget({
       {
         !loading ? (
           <ImagePreview
-            src={`/images/${photo.imageId}`}
+            src={`${import.meta.env.VITE_IMAGES_URL}/${photo.imageId}`}
             title={photo.title}
             imageClassName="w-[13.5625rem] h-[13.5625rem] rounded-lg"
           />
