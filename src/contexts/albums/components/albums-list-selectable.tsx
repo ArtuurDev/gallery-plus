@@ -1,9 +1,12 @@
+import React, { useTransition } from "react";
 import { Divider } from "../../../components/divider";
 import { InputCheckbox } from "../../../components/input-checkbox";
 import { Skeleton } from "../../../components/skeleton";
 import { Text } from "../../../components/text";
 import type { Photo } from "../../photos/models/photos";
 import type { Album } from "../models/album";
+import { usePhoto } from "../../photos/hooks/use-photo";
+import { useToast } from "../../toast-context";
 
 interface AlbumsListSelectableProps {
   loading?: boolean
@@ -16,12 +19,18 @@ export function AlbumsListSelectable({
   photo,
   loading
 }: AlbumsListSelectableProps) {
+  const { updatePhotoAlbums } = usePhoto()
+  const { toast } = useToast()
+  const [, startTransition] = useTransition()
+
   function isChecked(albumId: string) {
-    return photo.albums.some(album => album.id === albumId)
+    return photo?.albums?.some(album => album.id === albumId) || false
   }
 
   function handlePhotoOnAlbums(albumId: string) {
-    let albumsIds = []
+    if (!photo) return;
+
+    let albumsIds: string[] = []
 
     if (isChecked(albumId)) {
       albumsIds = photo.albums
@@ -31,7 +40,14 @@ export function AlbumsListSelectable({
       albumsIds = [...photo.albums.map((album) => album.id), albumId]
     }
 
-    console.log(albumsIds)
+    startTransition(async () => {
+      try {
+        await updatePhotoAlbums(photo.id, albumsIds);
+        toast.success("Associação de álbuns atualizada!");
+      } catch (error) {
+        toast.error("Erro ao atualizar álbuns da foto.");
+      }
+    });
   }
 
   return (
@@ -45,8 +61,8 @@ export function AlbumsListSelectable({
                 {album.title}
               </Text>
               <InputCheckbox
-                defaultChecked={isChecked(album.id)}
-                onClick={() => handlePhotoOnAlbums(album.id)}
+                checked={isChecked(album.id)}
+                onChange={() => handlePhotoOnAlbums(album.id)}
               />
             </div>
             {index !== albums.length - 1 && <Divider className="mt-4" />}

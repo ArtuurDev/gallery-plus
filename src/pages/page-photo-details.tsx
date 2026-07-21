@@ -6,18 +6,39 @@ import { ImagePreview } from "../components/image-preview";
 import { Button } from "../components/button";
 import { AlbumsListSelectable } from "../contexts/albums/components/albums-list-selectable";
 import { usePhoto } from "../contexts/photos/hooks/use-photo";
-import { useParams } from "react-router";
+import { useParams, useNavigate } from "react-router";
 import { useAlbums } from "../contexts/albums/hooks/use-albums";
 import type { Photo } from "../contexts/photos/models/photos";
+import { useToast } from "../contexts/toast-context";
+import { useTransition } from "react";
 
 export function PagePhotoDetails() {
-
   const { id } = useParams();
-  const { photo, isLoadingPhoto } = usePhoto(id)
-  const { albums, isLoadingAlbums } = useAlbums()
+  const navigate = useNavigate();
+  const { toast } = useToast();
+  const [isDeleting, setIsDeleting] = useTransition();
+  const { photo, isLoadingPhoto, nextPhotoId, previousPhotoId, deletePhoto } = usePhoto(id);
+  const { albums } = useAlbums()
+
+  function handleDeletePhoto() {
+    if (!photo) return;
+    setIsDeleting(async () => {
+      try {
+        await deletePhoto(photo.id);
+        toast.success("Foto excluída com sucesso!")
+        navigate("/");
+      } catch (error) {
+        toast.error("Erro ao excluir a foto.")
+      }
+    });
+  }
 
   if (!isLoadingPhoto && !photo) {
-    return <div>Foto não encontrada</div>
+    return (
+      <Container className="py-12 text-center">
+        <Text variant="heading-medium">Foto não encontrada</Text>
+      </Container>
+    );
   }
 
   return (
@@ -29,7 +50,7 @@ export function PagePhotoDetails() {
           <Skeleton className="w-48 h-8" />
         )}
 
-        <PhotosNavigator />
+        <PhotosNavigator loading={isLoadingPhoto} nextPhotoId={nextPhotoId} previousPhotoId={previousPhotoId} />
       </header>
 
       <div className="grid grid-cols-[21rem_1fr] gap-24">
@@ -47,7 +68,9 @@ export function PagePhotoDetails() {
 
           {
             !isLoadingPhoto ? (
-              <Button variant="destructive">Excluir</Button>
+              <Button variant="destructive" handling={isDeleting} onClick={handleDeletePhoto}>
+                Excluir
+              </Button>
             ) : (
               <Skeleton className="w-20 h-10" />
             )

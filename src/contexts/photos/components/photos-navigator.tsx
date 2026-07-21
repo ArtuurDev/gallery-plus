@@ -20,6 +20,8 @@ export function PhotosNavigator({
   ...props
 }: PhotosNavigatorProps) {
   const navigate = useNavigate()
+
+  
   return (
     <div className={cx("flex gap-2", className)} {...props}>
       {!loading ? (
@@ -29,7 +31,7 @@ export function PhotosNavigator({
             variant="secondary"
             disabled={!previousPhotoId}
             onClick={() => {
-              navigate(`/fotos/${previousPhotoId}`)
+              navigate(`${import.meta.env.VITE_IMAGES_URL}/${previousPhotoId}`)
             }}
           />
           <Button
@@ -37,7 +39,7 @@ export function PhotosNavigator({
             variant="secondary"
             disabled={!nextPhotoId}
             onClick={() => {
-              navigate(`/fotos/${nextPhotoId}`)
+              navigate(`${import.meta.env.VITE_IMAGES_URL}/${nextPhotoId}`)
             }}
           >
             Próxima imagem
