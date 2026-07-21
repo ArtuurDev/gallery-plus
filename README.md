@@ -40,11 +40,6 @@ Este projeto foi desenvolvido em aula com a **Rocketseat**.
 - **Tailwind CSS** (Estilização utilitária moderna e responsiva)
 - **Nuqs** (Sincronização de filtros/busca diretamente na URL da aplicação)
 
-### Backend
-- **Fastify** (Servidor HTTP leve e de alta performance)
-- **Multipart Upload** (Suporte a uploads eficientes de imagens)
-- **Zod** (Validação de parâmetros no backend)
-
 ---
 
 ## ⚙️ Como Executar o Projeto
